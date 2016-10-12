@@ -11,9 +11,9 @@ class Ideas extends React.Component {
       return <Idea key={idea.id} idea={idea} />
     });
     return(
-      <table className= 'table-ideas'>
+      <table className= 'table table-ideas'>
         <thead>
-          <tr>
+          <tr className= 'table-headers'>
             <td>Title</td>
             <td>Body</td>
             <td>Quality</td>
