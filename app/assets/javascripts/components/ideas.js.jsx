@@ -11,6 +11,18 @@ class Ideas extends React.Component {
     this.setState({ideas: newState});
   }
 
+  handleDelete(idea) {
+    var index = this.state.ideas.indexOf(idea);
+    console.log(index);
+  }
+
+  // deleteRecord(record) {
+  //     var index = this.state.records.indexOf(record);
+  //     var records = React.addons.update(this.state.records, {$splice: [[index, 1]] });
+  //     this.setState({records: records});
+  //   };
+
+
   render() {
     return(
       <div>
