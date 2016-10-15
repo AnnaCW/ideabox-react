@@ -8,6 +8,10 @@ class Api::V1::IdeasController < ApiBaseController
     render json: Idea.update(params[:id], idea_params)
   end
 
+  def destroy
+    render json: Idea.destroy(params[:id])
+  end
+
   private
 
   def idea_params

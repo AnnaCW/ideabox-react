@@ -24,4 +24,11 @@ describe "Ideas Endpoint" do
     expect(parsed_response["body"]).to eq("updated!")
     expect(parsed_response["quality"]).to eq("plausible")
   end
+
+  it "deletes idea" do
+    idea = create(:idea)
+    delete "/api/v1/ideas/#{idea.id}", params: {id: idea.id}
+
+    expect(response).to be_success
+  end
 end
