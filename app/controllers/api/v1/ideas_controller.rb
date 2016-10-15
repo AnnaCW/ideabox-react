@@ -1,8 +1,11 @@
 class Api::V1::IdeasController < ApiBaseController
-  respond_to :json
 
   def create
-    respond_with Idea.create(idea_params), location: nil
+    render json: Idea.create(idea_params), location: nil
+  end
+
+  def update
+    render json: Idea.update(params[:id], idea_params)
   end
 
   private
