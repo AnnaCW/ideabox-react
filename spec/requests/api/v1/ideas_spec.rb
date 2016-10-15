@@ -30,5 +30,11 @@ describe "Ideas Endpoint" do
     delete "/api/v1/ideas/#{idea.id}", params: {id: idea.id}
 
     expect(response).to be_success
+
+    parsed_response = JSON.parse(response.body)
+
+    expect(parsed_response["title"]).to eq(idea.title)
+    expect(parsed_response["body"]).to eq(idea.body)
+    expect(parsed_response["quality"]).to eq(idea.quality)
   end
 end
