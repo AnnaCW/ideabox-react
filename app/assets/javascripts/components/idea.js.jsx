@@ -17,7 +17,7 @@ class Idea extends React.Component {
       url: "/api/v1/ideas/" + this.props.idea.id,
       method: "DELETE",
       success: (idea) => {
-        console.log(idea)
+        this.props.handleDelete(idea);
       }
     });
   }

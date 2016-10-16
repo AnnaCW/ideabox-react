@@ -1,8 +1,12 @@
 class IdeasDisplay extends React.Component {
 
+  handleDelete(idea) {
+    this.props.handleUpdate(idea);
+  }
+
   render() {
     var ideas = this.props.ideas.map( (idea) => {
-      return <Idea key={idea.id} idea={idea} />
+      return <Idea key={idea.id} handleDelete={this.handleDelete.bind(this)} idea={idea} />
     });
     return(
       <table className= 'table table-ideas'>
