@@ -3,7 +3,9 @@ class NewIdea extends React.Component {
     super(props);
   }
 
-  handleClick() {
+  handleClick(event) {
+    event.preventDefault();
+    
     var data = {
       title: this.refs.title.value,
       body: this.refs.body.value
@@ -14,8 +16,7 @@ class NewIdea extends React.Component {
       method: "POST",
       data: {idea: data },
       success: (idea) => {
-        // this.props.handleSubmit(idea);
-        console.log(data)
+        this.props.handleSubmit(idea);
       }
     });
   }

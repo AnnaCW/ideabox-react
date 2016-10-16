@@ -11,11 +11,18 @@ class Ideas extends React.Component {
     this.setState({ideas: newState});
   }
 
+  handleUpdate(idea) {
+    var ideas = this.props.ideas
+    var updated = ideas.filter((id) => { return id.id != idea.id})
+    this.setState({ideas: updated})
+  }
+
   render() {
     return(
       <div>
         <NewIdea handleSubmit={this.handleSubmit.bind(this)}/>
-        <IdeasDisplay ideas={this.state.ideas} />
+
+        <IdeasDisplay handleUpdate={this.handleUpdate.bind(this)} ideas={this.state.ideas} />
       </div>
     )
   }
