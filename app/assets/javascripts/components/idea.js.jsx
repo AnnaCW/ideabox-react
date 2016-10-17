@@ -10,7 +10,7 @@ class Idea extends React.Component {
       return short;
   }
 
-  handleClick(event) {
+  handleDeleteClick(event) {
     event.preventDefault();
 
     $.ajax({
@@ -22,6 +22,44 @@ class Idea extends React.Component {
     });
   }
 
+  handleQUpClick(event) {
+    event.preventDefault();
+
+    var increaseQuality = {
+      swill: 'plausible',
+      plausible: 'genius',
+      genius: 'genius'
+    };
+
+    $.ajax({
+      url: "/api/v1/ideas/" + this.props.idea.id,
+      method: "PATCH",
+      data: { idea: { quality: increaseQuality[this.props.idea.quality]} },
+      success: (idea) => {
+        console.log("quality up");
+      }
+    })
+  }
+
+  handleQDownClick(event) {
+    event.preventDefault();
+
+    var decreaseQuality = {
+      swill: 'swill',
+      plausible: 'swill',
+      genius: 'plausible'
+    };
+
+    $.ajax({
+      url: "/api/v1/ideas/" + this.props.idea.id,
+      method: "PATCH",
+      data: { idea: { quality: decreaseQuality[this.props.idea.quality]} },
+      success: (idea) => {
+        console.log("quality down");
+      }
+    })
+  }
+
   render() {
     return(
       <tr>
@@ -29,7 +67,11 @@ class Idea extends React.Component {
         <td>{this.trimBody(this.props.idea.body)}</td>
         <td>{this.props.idea.quality}</td>
         <td>
-          <button onClick={this.handleClick.bind(this)} className='btn btn-danger'>Delete</button>
+          <button onClick={this.handleQUpClick.bind(this)} className='btn btn-sm btn-success'>Thumbs Up</button>
+          <button onClick={this.handleQDownClick.bind(this)} className='btn btn-sm btn-warning'>Thumbs Down</button>
+        </td>
+        <td>
+          <button onClick={this.handleDeleteClick.bind(this)} className='btn btn-danger'>Delete</button>
         </td>
       </tr>
     )

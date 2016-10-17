@@ -21,7 +21,6 @@ class Ideas extends React.Component {
     return(
       <div>
         <NewIdea handleSubmit={this.handleSubmit.bind(this)}/>
-
         <IdeasDisplay handleUpdate={this.handleUpdate.bind(this)} ideas={this.state.ideas} />
       </div>
     )
