@@ -4,9 +4,13 @@ class IdeasDisplay extends React.Component {
     this.props.handleUpdate(idea);
   }
 
+  handleQualityChange(idea) {
+    this.props.handleChange(idea);
+  }
+
   render() {
     var ideas = this.props.ideas.map( (idea) => {
-      return <Idea key={idea.id} handleDelete={this.handleDelete.bind(this)} idea={idea} />
+      return <Idea key={idea.id} handleDelete={this.handleDelete.bind(this)} handleQualityChange={this.handleQualityChange.bind(this)} idea={idea} />
     });
     return(
       <table className= 'table table-ideas'>
