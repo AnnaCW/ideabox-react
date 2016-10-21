@@ -36,7 +36,7 @@ class Idea extends React.Component {
       method: "PATCH",
       data: { idea: { quality: increaseQuality[this.props.idea.quality]} },
       success: (idea) => {
-        console.log(idea.quality);
+        this.props.handleQualityChange(idea);
       }
     })
   }
@@ -55,7 +55,7 @@ class Idea extends React.Component {
       method: "PATCH",
       data: { idea: { quality: decreaseQuality[this.props.idea.quality]} },
       success: (idea) => {
-        console.log(idea.quality);
+        this.props.handleQualityChange(idea);
       }
     })
   }

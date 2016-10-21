@@ -14,14 +14,21 @@ class Ideas extends React.Component {
   handleUpdate(idea) {
     var ideas = this.props.ideas
     var updated = ideas.filter((id) => { return id.id != idea.id})
-    this.setState({ideas: updated})
+    this.setState({ideas: updated});
+  }
+
+  handleChange(idea) {
+    var ideas = this.props.ideas
+    var updated = ideas.filter((id) => { return id.id != idea.id})
+    updated.unshift(idea);
+    this.setState({ideas: updated});
   }
 
   render() {
     return(
       <div>
         <NewIdea handleSubmit={this.handleSubmit.bind(this)}/>
-        <IdeasDisplay handleUpdate={this.handleUpdate.bind(this)} ideas={this.state.ideas} />
+        <IdeasDisplay handleUpdate={this.handleUpdate.bind(this)} handleChange={this.handleChange.bind(this)} ideas={this.state.ideas} />
       </div>
     )
   }
